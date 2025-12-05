@@ -5,9 +5,10 @@ const metrics = [
 
 export default function AnalyticsPage() {
   return (
-    <section>
-      <h2>Analytics Overview</h2>
-      <table>
+    <section className="card">
+      <div className="section-title">Analytics overview</div>
+      <p className="section-muted">Concise metrics, ready to open in the browser without extra setup.</p>
+      <table className="table">
         <thead>
           <tr>
             <th>Account</th>

@@ -1,7 +1,7 @@
 'use client';
 
 import { Responsive, WidthProvider } from 'react-grid-layout';
-import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 import { WidgetConfig } from '../state/dashboardStore';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -31,16 +31,22 @@ export function DashboardWidgetGrid({ widgets }: Props) {
       isResizable
     >
       {widgets.map((w) => (
-        <div key={w.id} data-grid={{ x: w.position.x, y: w.position.y, w: w.size.w, h: w.size.h }}>
-          <h4>{w.type}</h4>
-          <LineChart width={400} height={200} data={sampleData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="date" />
-            <YAxis />
-            <Tooltip />
-            <Line type="monotone" dataKey={w.metrics[0]} stroke="#8884d8" />
-            {w.metrics[1] && <Line type="monotone" dataKey={w.metrics[1]} stroke="#82ca9d" />}
-          </LineChart>
+        <div
+          key={w.id}
+          data-grid={{ x: w.position.x, y: w.position.y, w: w.size.w, h: w.size.h }}
+          style={{ background: 'rgba(255,255,255,0.02)', borderRadius: 12, padding: 10, border: '1px solid var(--border)' }}
+        >
+          <div style={{ fontWeight: 700, marginBottom: 8, color: 'var(--text)' }}>{w.type}</div>
+          <ResponsiveContainer width="100%" height={200}>
+            <LineChart data={sampleData} margin={{ left: 0, right: 0, top: 5, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+              <XAxis dataKey="date" stroke="var(--muted)" tickLine={false} axisLine={{ stroke: 'var(--border)' }} />
+              <YAxis stroke="var(--muted)" tickLine={false} axisLine={{ stroke: 'var(--border)' }} />
+              <Tooltip contentStyle={{ background: '#0f162e', border: '1px solid var(--border)' }} />
+              <Line type="monotone" dataKey={w.metrics[0]} stroke="#7c8cff" strokeWidth={2} dot={false} />
+              {w.metrics[1] && <Line type="monotone" dataKey={w.metrics[1]} stroke="#82ca9d" strokeWidth={2} dot={false} />}
+            </LineChart>
+          </ResponsiveContainer>
         </div>
       ))}
     </ResponsiveGridLayout>
