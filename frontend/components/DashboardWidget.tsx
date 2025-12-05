@@ -16,6 +16,11 @@ interface Props {
   widgets: WidgetConfig[];
 }
 
+const widgetTitle = (type: string) => {
+  if (type === 'line_chart') return 'Лінійний графік';
+  return type;
+};
+
 export function DashboardWidgetGrid({ widgets }: Props) {
   const layouts = {
     lg: widgets.map((w) => ({ i: w.id, x: w.position.x, y: w.position.y, w: w.size.w, h: w.size.h }))
@@ -36,7 +41,7 @@ export function DashboardWidgetGrid({ widgets }: Props) {
           data-grid={{ x: w.position.x, y: w.position.y, w: w.size.w, h: w.size.h }}
           style={{ background: 'rgba(255,255,255,0.02)', borderRadius: 12, padding: 10, border: '1px solid var(--border)' }}
         >
-          <div style={{ fontWeight: 700, marginBottom: 8, color: 'var(--text)' }}>{w.type}</div>
+          <div style={{ fontWeight: 700, marginBottom: 8, color: 'var(--text)' }}>{widgetTitle(w.type)}</div>
           <ResponsiveContainer width="100%" height={200}>
             <LineChart data={sampleData} margin={{ left: 0, right: 0, top: 5, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />

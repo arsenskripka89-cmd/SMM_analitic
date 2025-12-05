@@ -27,7 +27,7 @@ export const updateDashboard = (req: Request, res: Response) => {
   const { id } = req.params;
   const payload = req.body as Partial<Dashboard>;
   const dashboard = dashboards.find((d) => d.id === id);
-  if (!dashboard) return res.status(404).json({ message: 'Dashboard not found' });
+  if (!dashboard) return res.status(404).json({ message: 'Дашборд не знайдено' });
   Object.assign(dashboard, payload, { updatedAt: new Date() });
   res.json(dashboard);
 };
@@ -35,7 +35,7 @@ export const updateDashboard = (req: Request, res: Response) => {
 export const deleteDashboard = (req: Request, res: Response) => {
   const { id } = req.params;
   const idx = dashboards.findIndex((d) => d.id === id);
-  if (idx === -1) return res.status(404).json({ message: 'Dashboard not found' });
+  if (idx === -1) return res.status(404).json({ message: 'Дашборд не знайдено' });
   dashboards.splice(idx, 1);
   res.status(204).send();
 };
