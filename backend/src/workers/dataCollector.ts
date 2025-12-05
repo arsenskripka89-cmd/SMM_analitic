@@ -1,4 +1,5 @@
 import cron from 'node-cron';
+import crypto from 'node:crypto';
 import { AccountStatisticDaily, PostStatisticDaily } from '../db/models.js';
 
 const accountStats: AccountStatisticDaily[] = [];
