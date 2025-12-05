@@ -8,8 +8,8 @@ export default function AuthPage() {
 
   return (
     <section className="card">
-      <div className="section-title">Access</div>
-      <p className="section-muted">Sign in to open the dashboard directly in your browser.</p>
+      <div className="section-title">Доступ</div>
+      <p className="section-muted">Увійдіть, щоб відкрити дашборд безпосередньо в браузері.</p>
       <div className="form">
         <input
           className="input"
@@ -19,16 +19,16 @@ export default function AuthPage() {
         />
         <input
           className="input"
-          placeholder="Password"
+          placeholder="Пароль"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="button" className="button">
-          Submit
+          Увійти
         </button>
       </div>
-      <p className="note">Demo form only — just enough to preview the flow.</p>
+      <p className="note">Демонстраційна форма — достатньо, щоб побачити сценарій.</p>
     </section>
   );
 }

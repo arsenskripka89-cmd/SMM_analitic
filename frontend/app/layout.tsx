@@ -4,12 +4,12 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'SMM Analytics',
-  description: 'Social media analytics suite'
+  description: 'Панель аналітики соціальних мереж'
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="uk">
       <body className="app-body">
         <div className="app-shell">
           <header className="app-header">
@@ -17,16 +17,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <span className="brand-badge">SMM</span>
               <div>
                 <div>SMM Analytics</div>
-                <small style={{ color: 'var(--muted)', fontWeight: 600 }}>Unified monitoring</small>
+                <small style={{ color: 'var(--muted)', fontWeight: 600 }}>Єдина точка моніторингу</small>
               </div>
             </div>
             <nav className="nav">
-              <Link href="/">Home</Link>
-              <Link href="/dashboard">Dashboard</Link>
-              <Link href="/analytics">Analytics</Link>
-              <Link href="/accounts">Accounts</Link>
-              <Link href="/settings">Settings</Link>
-              <Link href="/auth">Auth</Link>
+              <Link href="/">Головна</Link>
+              <Link href="/dashboard">Дашборд</Link>
+              <Link href="/analytics">Аналітика</Link>
+              <Link href="/accounts">Акаунти</Link>
+              <Link href="/settings">Налаштування</Link>
+              <Link href="/auth">Доступ</Link>
             </nav>
           </header>
           <main className="app-main">{children}</main>

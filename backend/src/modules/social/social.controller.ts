@@ -39,7 +39,7 @@ export const listAccounts = (req: Request, res: Response) => {
 export const deleteAccount = (req: Request, res: Response) => {
   const id = req.params.id;
   const idx = accounts.findIndex((acc) => acc.id === id);
-  if (idx === -1) return res.status(404).json({ message: 'Account not found' });
+  if (idx === -1) return res.status(404).json({ message: 'Акаунт не знайдено' });
   accounts.splice(idx, 1);
   res.status(204).send();
 };
@@ -49,7 +49,7 @@ export const getAuthUrl = (req: Request, res: Response) => {
   const adapter = getPlatformAdapter(platform);
   const redirectUri = (req.query.redirectUri as string | undefined) ?? 'http://localhost:3000/auth/callback';
 
-  if (!adapter) return res.status(400).json({ message: 'Unsupported platform' });
+  if (!adapter) return res.status(400).json({ message: 'Платформа не підтримується' });
 
   res.json({ platform, authorizationUrl: adapter.buildAuthUrl(redirectUri) });
 };
@@ -59,12 +59,12 @@ export const collectAccountInsights = (req: Request, res: Response) => {
   const adapter = getPlatformAdapter(platform);
   const { accountId, handle } = req.body as { accountId?: string; handle?: string };
 
-  if (!adapter) return res.status(400).json({ message: 'Unsupported platform' });
+  if (!adapter) return res.status(400).json({ message: 'Платформа не підтримується' });
 
   const account = accountId ? accounts.find((a) => a.id === accountId) : undefined;
   const effectiveHandle = handle ?? account?.handle;
   if (!effectiveHandle) {
-    return res.status(400).json({ message: 'Missing account handle' });
+    return res.status(400).json({ message: 'Не вистачає імені акаунта' });
   }
 
   const token = account ? tokens.find((t) => t.socialAccountId === account.id) : undefined;

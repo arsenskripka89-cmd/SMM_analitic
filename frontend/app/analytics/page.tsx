@@ -6,14 +6,14 @@ const metrics = [
 export default function AnalyticsPage() {
   return (
     <section className="card">
-      <div className="section-title">Analytics overview</div>
-      <p className="section-muted">Concise metrics, ready to open in the browser without extra setup.</p>
+      <div className="section-title">Огляд аналітики</div>
+      <p className="section-muted">Стислі метрики, готові до перегляду в браузері без додаткових кроків.</p>
       <table className="table">
         <thead>
           <tr>
-            <th>Account</th>
-            <th>Followers</th>
-            <th>Reach</th>
+            <th>Акаунт</th>
+            <th>Підписники</th>
+            <th>Охоплення</th>
             <th>ER %</th>
           </tr>
         </thead>
